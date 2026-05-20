@@ -201,6 +201,11 @@ jobs:
         if: env.UPLOAD_FIRMWARE == 'true'
         run: |
           cd openwrt/bin/targets/*/*
+          cat sha256sums
+          echo "VERSION_KERNEL=$(find -type f -name "*.manifest" -exec grep -oP '^kernel - \K.*?(?=~|-\d+-)' {} \;)" >> $GITHUB_ENV
+          cp openwrt/.config build.config
+          mv -f openwrt/bin/packages/*/*/*.apk packages
+          tar -zcf Packages.tar.gz packages
           rm -rf packages
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
 
@@ -221,7 +226,7 @@ jobs:
           ----------------------
           设备型号: XG-040G-MD
           构建时间: $(date +"%Y-%m-%d %H:%M")
-          内核版本: 6.12.X
+          内核版本: ${{ env.VERSION_KERNEL }}
           源码仓库: $REPO_URL
           分支: $REPO_BRANCH
           EOF
