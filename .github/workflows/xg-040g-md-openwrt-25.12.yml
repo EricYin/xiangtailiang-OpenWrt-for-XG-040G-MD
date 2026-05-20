@@ -200,10 +200,10 @@ jobs:
         id: organize
         if: env.UPLOAD_FIRMWARE == 'true'
         run: |
+          ls openwrt
           cd openwrt/bin/targets/*/*
           cat sha256sums
           echo "VERSION_KERNEL=$(find -type f -name "*.manifest" -exec grep -oP '^kernel - \K.*?(?=~|-\d+-)' {} \;)" >> $GITHUB_ENV
-          cp openwrt/.config build.config
           mv -f openwrt/bin/packages/*/*/*.apk packages
           tar -zcf Packages.tar.gz packages
           rm -rf packages
