@@ -199,12 +199,17 @@ jobs:
       - name: Prepare firmware artifacts path
         id: organize
         if: env.UPLOAD_FIRMWARE == 'true'
-        run: |
-          ls openwrt
+        run: |         
           cd openwrt/bin/targets/*/*
+          echo "list current"
+          ls 
+          echo "list openwrt/bin/targets/*/*"
+          ls openwrt/bin/targets/*/*
+          echo "list openwrt/bin/targets/*"
+          ls openwrt/bin/targets/*          
           cat sha256sums
           echo "VERSION_KERNEL=$(find -type f -name "*.manifest" -exec grep -oP '^kernel - \K.*?(?=~|-\d+-)' {} \;)" >> $GITHUB_ENV
-          mv -f openwrt/bin/packages/*/*/*.apk packages
+          mv -f openwrt/bin/packages/*/*.apk packages
           tar -zcf Packages.tar.gz packages
           rm -rf packages
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
