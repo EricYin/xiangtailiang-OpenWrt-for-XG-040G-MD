@@ -92,6 +92,11 @@ UPDATE_PACKAGE "homeproxy" "immortalwrt/homeproxy" "master"
 # Argon 主题
 UPDATE_PACKAGE "luci-theme-argon" "jerrykuku/luci-theme-argon" "master"
 UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
+UPDATE_PACKAGE "luci-app-airoha-npu" "ericyin/luci-app-airoha-npu" "master"
+
+# 修改luci-app-airoha-npu插件的Makefile（不修改编译的时候会找不到路径报错）
+# vi luci-app-airoha-npu/Makefile
+# include $(TOPDIR)/feeds/luci/luci.mk
 
 # 修改 LuCI 默认主题为 Argon（保留 bootstrap 包可共存）
 echo " "
