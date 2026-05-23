@@ -92,7 +92,7 @@ UPDATE_PACKAGE "homeproxy" "immortalwrt/homeproxy" "master"
 # Argon 主题
 UPDATE_PACKAGE "luci-theme-argon" "jerrykuku/luci-theme-argon" "master"
 UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
-UPDATE_PACKAGE "luci-app-airoha-npu" "ericyin/luci-app-airoha-npu" "master"
+UPDATE_PACKAGE "luci-app-airoha-npu" "ericyin/luci-app-airoha-npu" "main"
 
 # 修改luci-app-airoha-npu插件的Makefile（不修改编译的时候会找不到路径报错）
 # vi luci-app-airoha-npu/Makefile
