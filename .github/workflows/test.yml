@@ -146,5 +146,7 @@ jobs:
           grep "CONFIG_PACKAGE_block-mount=y" .config || echo "WARNING: CONFIG_PACKAGE_block-mount missing!"
           grep "CONFIG_BUSYBOX_DEFAULT_DEVMEM=y" .config || echo "WARNING: CONFIG_BUSYBOX_DEFAULT_DEVMEM missing!"   
           grep "CONFIG_PACKAGE_luci-app-airoha-npu=y" .config || echo "WARNING: CONFIG_PACKAGE_luci-app-airoha-npu missing!"
-          make openwrt/package/luci-app-airoha-npu/compile V=s
+          echo "CONFIG_PACKAGE_luci-app-airoha-npu=y" >> .config
+          cd openwrt
+          make package/luci-app-airoha-npu/compile V=s
 
