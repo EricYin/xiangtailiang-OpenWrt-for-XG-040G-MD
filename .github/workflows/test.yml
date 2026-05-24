@@ -147,5 +147,9 @@ jobs:
           grep "CONFIG_BUSYBOX_DEFAULT_DEVMEM=y" .config || echo "WARNING: CONFIG_BUSYBOX_DEFAULT_DEVMEM missing!"   
           grep "CONFIG_PACKAGE_luci-app-airoha-npu=y" .config || echo "WARNING: CONFIG_PACKAGE_luci-app-airoha-npu missing!"
           echo "CONFIG_PACKAGE_luci-app-airoha-npu=y" >> .config
+          make download -j4 V=s
+          # Remove small incomplete files <1KB
+          find dl -size -1024c -delete
           make package/luci-app-airoha-npu/compile V=s
 
+       
