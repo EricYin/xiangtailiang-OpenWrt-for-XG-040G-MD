@@ -147,6 +147,6 @@ jobs:
           grep "CONFIG_BUSYBOX_DEFAULT_DEVMEM=y" .config || echo "WARNING: CONFIG_BUSYBOX_DEFAULT_DEVMEM missing!"   
           grep "CONFIG_PACKAGE_luci-app-airoha-npu=y" .config || echo "WARNING: CONFIG_PACKAGE_luci-app-airoha-npu missing!"
           echo "CONFIG_PACKAGE_luci-app-airoha-npu=y" >> .config
-          cd openwrt
+          cd ./openwrt
           make package/luci-app-airoha-npu/compile V=s
 
