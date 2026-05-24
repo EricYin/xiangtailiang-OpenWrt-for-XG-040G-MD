@@ -141,8 +141,6 @@ jobs:
         run: |
           cp -fv "${CONFIG_FILE}" openwrt/.config
           cd openwrt && make defconfig
-          grep "CONFIG_BUSYBOX_DEFAULT_DEVMEM=y" .config || echo "CONFIG_BUSYBOX_DEFAULT_DEVMEM=y" >> .config
-          grep "CONFIG_PACKAGE_luci-app-airoha-npu=y" .config || echo "CONFIG_PACKAGE_luci-app-airoha-npu=y" >> .config
           [ -e .config ] && cp .config defconfig-final.config
 
       - name: Upload build config files
