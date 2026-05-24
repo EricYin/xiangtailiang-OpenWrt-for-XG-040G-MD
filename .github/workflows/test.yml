@@ -16,14 +16,14 @@ on:
     branches:
       - main
     paths:
-      - ".github/workflows/xg-040g-md-openwrt-25.12.yml"
+      - ".github/workflows/test.yml"
       - "config/**"
       - "scripts/**"
       - "feeds.conf.default"
 
 env:
   CONFIG_FILE: "config/xg-040g-md.config"
-  REPO_URL: https://github.com/xiangtailiang/openwrt.git
+  REPO_URL: https://github.com/ericyin/openwrt.git
   REPO_BRANCH: openwrt-25.12
   FEEDS_CONF: feeds.conf.default
   UPLOAD_FIRMWARE: true
