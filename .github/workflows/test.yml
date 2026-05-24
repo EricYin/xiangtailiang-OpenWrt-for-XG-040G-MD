@@ -149,7 +149,8 @@ jobs:
           echo "CONFIG_PACKAGE_luci-app-airoha-npu=y" >> .config
           make download -j4 V=s
           # Remove small incomplete files <1KB
-          find dl -size -1024c -delete
+          #find dl -size -1024c -delete
+          ls /home/runner/work/xiangtailiang-OpenWrt-for-XG-040G-MD/xiangtailiang-OpenWrt-for-XG-040G-MD/openwrt/build_dir/hostpkg/lua-5.1.5/
           make package/luci-app-airoha-npu/compile V=s
 
        
