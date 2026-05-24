@@ -1,4 +1,4 @@
-name: Build_XG_040G_MD_OpenWrt_25_12
+name: test
 
 permissions:
   contents: write
