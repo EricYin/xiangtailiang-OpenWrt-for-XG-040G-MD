@@ -144,4 +144,12 @@ jobs:
           cd openwrt && make defconfig
           [ -e .config ] && cp .config defconfig-final.config
 
+      - name: Upload build config files
+        uses: actions/upload-artifact@v6
+        with:
+          name: build-config
+          path: |
+            config/xg-040g-md.config
+            openwrt/defconfig-final.config
+            openwrt/feeds.conf.default
           
