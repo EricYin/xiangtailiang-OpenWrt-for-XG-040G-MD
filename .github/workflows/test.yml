@@ -12,15 +12,6 @@ on:
         required: false
         default: false
         type: boolean
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/test.yml"
-      - "config/**"
-      - "scripts/**"
-      - "feeds.conf.default"
-
 env:
   CONFIG_FILE: "config/xg-040g-md.config"
   REPO_URL: https://github.com/ericyin/openwrt.git
