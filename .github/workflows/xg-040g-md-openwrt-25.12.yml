@@ -12,14 +12,14 @@ on:
         required: false
         default: false
         type: boolean
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/xg-040g-md-openwrt-25.12.yml"
-      - "config/**"
-      - "scripts/**"
-      - "feeds.conf.default"
+  #push:
+  #  branches:
+  #    - main
+  #  paths:
+  #    - ".github/workflows/xg-040g-md-openwrt-25.12.yml"
+  #    - "config/**"
+  #    - "scripts/**"
+  #    - "feeds.conf.default"
 
 env:
   CONFIG_FILE: "config/xg-040g-md.config"
