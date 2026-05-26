@@ -142,6 +142,10 @@ if [ -d "openwrt-passwall-packages" ]; then
 	rm -rf openwrt-passwall-packages
 fi
 
+unzip emortal.zip
+rm emortal.zip
+ls emortal
+
 echo " "
 echo "=========================================="
 echo "Package updates completed!"
