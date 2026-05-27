@@ -133,6 +133,8 @@ jobs:
         run: |
           cp -fv "${CONFIG_FILE}" openwrt/.config
           cd openwrt && make defconfig
+          sed -i 's/# CONFIG_BUSYBOX_DEFAULT_DEVMEM is not set/CONFIG_BUSYBOX_DEFAULT_DEVMEM=y/g' .config
+          make defconfig
           [ -e .config ] && cp .config defconfig-final.config
 
       - name: Upload build config files
