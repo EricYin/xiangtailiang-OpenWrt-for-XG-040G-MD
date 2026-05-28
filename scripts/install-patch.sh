@@ -1,5 +1,5 @@
-echo "list current dir..."
-ls
+echo "list current patch dir..."
+ls ./patch/target
 cp -f ./patch/target/* ./openwrt/target/
 ls ./openwrt/target/linux/airoha/dts
 ls ./openwrt/target/linux/airoha/an7581/base-files/lib/upgrade
