@@ -86,6 +86,11 @@ jobs:
         run: |
           git clone --depth 1 --branch "$REPO_BRANCH" "$REPO_URL" openwrt
 
+      - name: Install Patches
+        run: |
+          chmod +x $GITHUB_WORKSPACE/scripts/install-patch.sh
+          bash $GITHUB_WORKSPACE/scripts/install-patch.sh
+          
       - name: Move build dirs to /mnt/openwrt
         run: |
           sudo mkdir -p /mnt/openwrt/{dl,staging_dir,build_dir,ccache}
