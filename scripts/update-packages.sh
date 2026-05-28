@@ -142,14 +142,11 @@ if [ -d "openwrt-passwall-packages" ]; then
 	rm -rf openwrt-passwall-packages
 fi
 
-# PassWall 依赖包
-echo " "
-echo "=========================================="
-echo "Installing emortal packages..."
-echo "=========================================="
-unzip emortal.zip -d ./emortal
-rm emortal.zip
-ls emortal
+# echo "Installing emortal packages..."
+# echo "=========================================="
+# unzip emortal.zip -d ./emortal
+# rm emortal.zip
+# ls emortal
 
 echo " "
 echo "=========================================="
