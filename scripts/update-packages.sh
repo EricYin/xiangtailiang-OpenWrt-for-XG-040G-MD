@@ -25,9 +25,9 @@ UPDATE_FEED_PACKAGE() {
     local $REAL_PATH=$PWD
 	echo $REAL_PATH
 	cd $OLD
-	local SRC_LINK="\nsrc-link $PKG_NAME $REALP"
+	local SRC_LINK="src-link $PKG_NAME $REALP"
+	printf "\n$SRC_LINK" >> ../feeds.conf.default
 	
-	echo $SRC_LINK >> ../feeds.conf.default
 	../scripts/feeds update $PKG_NAME
     ../scripts/feeds install -a -p $PKG_NAME
 	return 0
