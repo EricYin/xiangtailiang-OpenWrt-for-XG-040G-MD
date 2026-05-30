@@ -134,7 +134,7 @@ sed -i 's|include ../../luci.mk|include $(TOPDIR)/feeds/luci/luci.mk|' ./luci-ap
 # vsftpd ui
 UPDATE_PACKAGE "luci-app-vsftpd" "ericyin/luci" "openwrt-25.12" "pkg" "" "luci"
 sed -i 's|include ../../luci.mk|include $(TOPDIR)/feeds/luci/luci.mk|' ./luci-app-vsftpd/Makefile
-cat ./luci-app-vsftpd/Makefile
+# cat ./luci-app-vsftpd/Makefile
 
 # 
 # Argon 主题
