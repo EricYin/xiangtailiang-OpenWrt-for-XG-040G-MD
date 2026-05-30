@@ -19,7 +19,12 @@ UPDATE_FEED_PACKAGE() {
 		echo "ERROR: Failed to clone $PKG_REPO"
 		return 1
 	fi
-    local REALP=readlink -f $FEED_DIR/$PKG_NAME
+
+	local OLD=$PWD
+	cd $FEED_DIR/$PKG_NAME
+    local $REAL_PATH=$PWD
+	echo $REAL_PATH
+	cd $OLD
 	local SRC_LINK="\nsrc-link $PKG_NAME $REALP"
 	
 	echo $SRC_LINK >> ../feeds.conf.default
