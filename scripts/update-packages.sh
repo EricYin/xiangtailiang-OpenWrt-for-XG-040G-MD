@@ -55,7 +55,7 @@ UPDATE_PACKAGE() {
 		if [ -n "$FOUND_DIRS" ]; then
 		    while read -r DIR; do
 				rm -rf "$DIR"
-/vv				echo "Delete directory: $DIR"
+				echo "Delete directory: $DIR"
 			done <<< "$FOUND_DIRS"
 		else
 			echo "Not found directory: $NAME"
