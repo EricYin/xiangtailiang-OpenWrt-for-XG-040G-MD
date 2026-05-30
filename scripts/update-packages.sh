@@ -6,7 +6,7 @@ UPDATE_FEED_PACKAGE() {
 	local PKG_BRANCH=$2
 	local FEED_DIR="../feeds/luci/applications"
     echo "Installing $PKG_REPO ..."
-    if [ ! -d $FEED_DIR ]; then
+    if [ ! -d "$FEED_DIR" ]; then
         echo "create feed app dir: $FEED_DIR..."
 	    mkdir -vp $FEED_DIR
     fi
