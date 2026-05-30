@@ -49,6 +49,10 @@ UPDATE_PACKAGE() {
 
 	# 删除 feeds 中可能存在的同名软件包
 	for NAME in "${PKG_LIST[@]}"; do
+	    if [ -z "$NAME" ]; then
+		    continue
+		fi
+		
 		echo "Search directory: $NAME"
 		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
 
@@ -128,7 +132,7 @@ sed -i 's|include ../../luci.mk|include $(TOPDIR)/feeds/luci/luci.mk|' ./luci-ap
 # cat ./luci-app-airoha-npu/Makefile
 
 # vsftpd ui
-UPDATE_PACKAGE "luci-app-vsftpd" "ericyin/luci" "openwrt-25.12" "pkg" "luci-app-vsftpd" "luci"
+UPDATE_PACKAGE "luci-app-vsftpd" "ericyin/luci" "openwrt-25.12" "pkg" "" "luci"
 sed -i 's|include ../../luci.mk|include $(TOPDIR)/feeds/luci/luci.mk|' ./luci-app-vsftpd/Makefile
 cat ./luci-app-vsftpd/Makefile
 
