@@ -121,6 +121,12 @@ echo "Done removing sing-box from feeds"
 # HomeProxy (代理软件) - 使用第5个参数指定额外要删除的包名
 UPDATE_PACKAGE "homeproxy" "immortalwrt/homeproxy" "master"
 
+# soc status app
+UPDATE_PACKAGE "luci-app-airoha-npu" "ericyin/luci-app-airoha-npu" "main"
+sed -i 's|include ../../luci.mk|include $(TOPDIR)/feeds/luci/luci.mk|' ./luci-app-airoha-npu/Makefile
+cat ./luci-app-airoha-npu/Makefile
+
+# 
 # Argon 主题
 UPDATE_PACKAGE "luci-theme-argon" "jerrykuku/luci-theme-argon" "master"
 UPDATE_PACKAGE "luci-app-argon-config" "jerrykuku/luci-app-argon-config" "master"
@@ -169,8 +175,6 @@ if [ -d "openwrt-passwall-packages" ]; then
 	rm -rf openwrt-passwall-packages
 fi
 
-UPDATE_FEED_PACKAGE "luci-app-airoha-npu" "ericyin/luci-app-airoha-npu" "main"
-echo  
 echo " "
 echo "=========================================="
 echo "Package updates completed!"
