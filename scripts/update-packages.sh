@@ -142,7 +142,7 @@ if [ ! -d "../feeds/luci/applications" ]; then
     echo "create ../feeds/luci/applications..."
 	mkdir -vp ../feeds/luci/applications
 fi
-git clone --depth=1 --single-branch --branch "main" "https://github.com/ericyin/luci-app-airoha-npu.git"
+git clone --depth=1 --single-branch --branch "main" "https://github.com/ericyin/luci-app-airoha-npu.git" ../feeds/luci/applications
 
 if [ ! -d "../feeds/luci/applications/luci-app-airoha-npu" ]; then
 	echo "ERROR: Failed to clone luci-app-airoha-npu"
