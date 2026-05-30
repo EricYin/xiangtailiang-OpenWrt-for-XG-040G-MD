@@ -1,6 +1,23 @@
 #!/bin/bash
 # 安装和更新第三方软件包
 # 此脚本在 openwrt/package/ 目录下运行，在 feeds install 之后执行
+UPDATE_FEED_PACKAGE() {  
+	local PKG_REPO=$1
+	local PKG_BRANCH=$2
+	local FEED_DIR="../feeds/luci/applications"
+    echo "Installing $PKG_REPO ..."
+    if [ ! -d $FEED_DIR ]; then
+        echo "create feed app dir: $FEED_DIR..."
+	    mkdir -vp $FEED_DIR
+    fi
+	
+    git clone --depth=1 --single-branch --branch "$PKG_BRANCH" "https://github.com/$PKG_REPO.git" "$FEED_DIR/$PKG_REPO"
+
+	if [ ! -d "$FEED_DIR/$PKG_REPO" ]; then
+		echo "ERROR: Failed to clone $PKG_REPO"
+		return 1
+	fi
+}
 
 UPDATE_PACKAGE() {
 	local PKG_NAME=$1
@@ -137,17 +154,7 @@ if [ -d "openwrt-passwall-packages" ]; then
 	rm -rf openwrt-passwall-packages
 fi
 
-echo "Installing luci-app-airoha-npu..."
-if [ ! -d "../feeds/luci/applications" ]; then
-    echo "create ../feeds/luci/applications..."
-	mkdir -vp ../feeds/luci/applications
-fi
-git clone --depth=1 --single-branch --branch "main" "https://github.com/ericyin/luci-app-airoha-npu.git" ../feeds/luci/applications
-
-if [ ! -d "../feeds/luci/applications/luci-app-airoha-npu" ]; then
-	echo "ERROR: Failed to clone luci-app-airoha-npu"
-	return 1
-fi
+UPDATE_FEED_PACKAGE "luci_app_airoha_npu" "main"
 
 echo " "
 echo "=========================================="
