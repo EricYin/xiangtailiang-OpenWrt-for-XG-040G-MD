@@ -6,7 +6,7 @@ UPDATE_FEED_PACKAGE() {
 	local PKG_REPO=$2
 	local PKG_BRANCH=$3
 	local GIT_URL="https://github.com/$PKG_REPO.git" 
-	local FEED_DIR="../feeds/luci/applications"
+	local FEED_DIR="../myluci"
     echo "Installing $PKG_NAME from $GIT_URL ..."
     if [ ! -d "$FEED_DIR" ]; then
         echo "create feed app dir: $FEED_DIR..."
@@ -19,6 +19,12 @@ UPDATE_FEED_PACKAGE() {
 		echo "ERROR: Failed to clone $PKG_REPO"
 		return 1
 	fi
+    local REALP=realpath $FEED_DIR/$PKG_NAME
+	local SRC_LINK="\nsrc-link $PKG_NAME $REALP"
+	
+	echo $SRC_LINK >> ../feeds.conf.default
+	../scripts/feeds update $PKG_NAME
+    ../scripts/feeds install -a -p $PKG_NAME
 	return 0
 }
 
@@ -158,7 +164,7 @@ if [ -d "openwrt-passwall-packages" ]; then
 fi
 
 UPDATE_FEED_PACKAGE "luci-app-airoha-npu" "ericyin/luci-app-airoha-npu" "main"
-
+echo  
 echo " "
 echo "=========================================="
 echo "Package updates completed!"
