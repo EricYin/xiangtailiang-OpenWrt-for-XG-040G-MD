@@ -14,7 +14,7 @@ UPDATE_FEED_PACKAGE() {
     fi
 	
     git clone --depth=1 --single-branch --branch "$PKG_BRANCH" "$GIT_URL" "$FEED_DIR/$PKG_NAME"
-
+    ls $FEED_DIR/$PKG_NAME
 	if [ ! -d "$FEED_DIR/$PKG_NAME" ]; then
 		echo "ERROR: Failed to clone $PKG_REPO"
 		return 1
