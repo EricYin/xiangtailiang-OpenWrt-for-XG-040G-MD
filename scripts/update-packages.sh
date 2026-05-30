@@ -5,14 +5,15 @@ UPDATE_FEED_PACKAGE() {
     local PKG_NAME=$1
 	local PKG_REPO=$2
 	local PKG_BRANCH=$3
+	local GIT_URL="https://github.com/$PKG_REPO.git" 
 	local FEED_DIR="../feeds/luci/applications"
-    echo "Installing $PKG_NAME ..."
+    echo "Installing $PKG_NAME from $GIT_URL ..."
     if [ ! -d "$FEED_DIR" ]; then
         echo "create feed app dir: $FEED_DIR..."
 	    mkdir -vp $FEED_DIR
     fi
 	
-    git clone --depth=1 --single-branch --branch "$PKG_BRANCH" "https://github.com/$PKG_REPO.git" "$FEED_DIR/$PKG_NAME"
+    git clone --depth=1 --single-branch --branch "$PKG_BRANCH" "$GIT_URL" "$FEED_DIR/$PKG_NAME"
 
 	if [ ! -d "$FEED_DIR/$PKG_NAME" ]; then
 		echo "ERROR: Failed to clone $PKG_REPO"
