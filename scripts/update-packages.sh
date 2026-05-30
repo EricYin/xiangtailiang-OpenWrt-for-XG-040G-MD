@@ -157,7 +157,7 @@ if [ -d "openwrt-passwall-packages" ]; then
 	rm -rf openwrt-passwall-packages
 fi
 
-UPDATE_FEED_PACKAGE "luci_app_airoha_npu" "ericyin/luci_app_airoha_npu" "main"
+UPDATE_FEED_PACKAGE "luci-app-airoha-npu" "ericyin/luci-app-airoha-npu" "main"
 
 echo " "
 echo "=========================================="
