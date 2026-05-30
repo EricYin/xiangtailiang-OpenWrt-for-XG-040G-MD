@@ -53,9 +53,9 @@ UPDATE_PACKAGE() {
 		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null)
 
 		if [ -n "$FOUND_DIRS" ]; then
-			while read -r DIR; do
+		    while read -r DIR; do
 				rm -rf "$DIR"
-				echo "Delete directory: $DIR"
+/vv				echo "Delete directory: $DIR"
 			done <<< "$FOUND_DIRS"
 		else
 			echo "Not found directory: $NAME"
@@ -66,6 +66,7 @@ UPDATE_PACKAGE() {
 	git clone --depth=1 --single-branch --branch "$PKG_BRANCH" "https://github.com/$PKG_REPO.git"
 
 	if [ ! -d "$REPO_NAME" ]; then
+	    ls
 		echo "ERROR: Failed to clone $PKG_REPO"
 		return 1
 	fi
@@ -124,7 +125,12 @@ UPDATE_PACKAGE "homeproxy" "immortalwrt/homeproxy" "master"
 # soc status app
 UPDATE_PACKAGE "luci-app-airoha-npu" "ericyin/luci-app-airoha-npu" "main"
 sed -i 's|include ../../luci.mk|include $(TOPDIR)/feeds/luci/luci.mk|' ./luci-app-airoha-npu/Makefile
-cat ./luci-app-airoha-npu/Makefile
+# cat ./luci-app-airoha-npu/Makefile
+
+# vsftpd ui
+UPDATE_PACKAGE "luci-app-vsftpd" "ericyin/luci" "openwrt-25.12" "pkg" "luci-app-vsftpd" "luci"
+sed -i 's|include ../../luci.mk|include $(TOPDIR)/feeds/luci/luci.mk|' ./luci-app-vsftpd/Makefile
+cat ./luci-app-vsftpd/Makefile
 
 # 
 # Argon 主题
